@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: zmqkafkatest-client
-        image: repo-billerica.perform.empirix.com:8081/empirix-eva-ecc/zmqkafkatest:2.9.24-develop
+        image: https://repo-billerica.perform.empirix.com:8081/empirix-eva-ecc/zmqkafkatest:2.9.24-develop
         command: ["make"]
         args: ["run", "ARGS=\"--zmq=tcp --client zmqkafkatest-server --packets 10000 --csv\""]
         ports:
