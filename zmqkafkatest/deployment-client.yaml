@@ -1,0 +1,33 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: zmqkafkatest-client
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+    targetPort: 8080
+  selector:
+    app: zmqkafkatest-client
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: zmqkafkatest-client
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: zmqkafkatest-client
+  template:
+    metadata:
+      labels:
+        app: zmqkafkatest-client
+    spec:
+      containers:
+      - name: zmqkafkatest-client
+        image: repo-billerica.perform.empirix.com:6000/empirix-eva-ecc/zmqkafkatest:2.9.24-develop
+        command: ["make"]
+        args: ["run", "ARGS=\"--zmq=tcp --client 172.20.52.153 --packets 10000 --csv\""]
+        ports:
+        - containerPort: 8080
