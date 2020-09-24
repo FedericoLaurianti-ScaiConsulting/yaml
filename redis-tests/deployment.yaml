@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: redis-tests
-        image: https://repo-billerica.perform.empirix.com:8081/empirix-eva-ecc/redis-tests:2.9.24-develop
+        image: repo-billerica.perform.empirix.com:6000/empirix-eva-ecc/redis-tests:2.9.24-develop
         command: ["hmredistests"]
         args: ["--performance=get10M", "--num-zmq-bg-threads=1", "--pipelining=1"]
         ports:
