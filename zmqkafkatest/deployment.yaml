@@ -31,23 +31,3 @@ spec:
         args: ["--zmq=tcp", "--server", "--packets=1000000", "--csv"]
         ports:
         - containerPort: 5555
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: zmqkafkatest-client
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: zmqkafkatest-client
-  template:
-    metadata:
-      labels:
-        app: zmqkafkatest-client
-    spec:
-      containers:
-      - name: zmqkafkatest-client
-        image: repo-billerica.perform.empirix.com:6000/empirix-eva-ecc/zmqkafkatest:2.9.24-develop
-        command: ["/home/hammer/hmcliutils/bin/hmzmqkafkatest"]
-        args: ["--zmq=tcp", "--client=zmqkafkatest-server", "--packets=1000000", "--csv"]
