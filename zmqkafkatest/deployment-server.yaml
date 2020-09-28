@@ -28,6 +28,6 @@ spec:
       - name: zmqkafkatest-server
         image: repo-billerica.perform.empirix.com:6000/empirix-eva-ecc/zmqkafkatest:2.9.24-develop
         command: ["/home/hammer/hmcliutils/bin/hmzmqkafkatest"]
-        args: ["--zmq", "--server", "--packets 1000000", "--csv"]
+        args: ["--zmq --server --packets 1000000 --csv"]
         ports:
         - containerPort: 8080
