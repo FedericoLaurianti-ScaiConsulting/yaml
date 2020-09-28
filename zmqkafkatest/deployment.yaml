@@ -6,7 +6,7 @@ spec:
   type: ClusterIP
   ports:
   - port: 5555
-    targetPort: 8080
+    targetPort: 6936
   selector:
     app: zmqkafkatest-server
 ---
@@ -30,7 +30,7 @@ spec:
         command: ["/home/hammer/hmcliutils/bin/hmzmqkafkatest"]
         args: ["--zmq=tcp", "--server", "--packets=1000000", "--csv"]
         ports:
-        - containerPort: 8080
+        - containerPort: 6936
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -51,5 +51,3 @@ spec:
         image: repo-billerica.perform.empirix.com:6000/empirix-eva-ecc/zmqkafkatest:2.9.24-develop
         command: ["/home/hammer/hmcliutils/bin/hmzmqkafkatest"]
         args: ["--zmq=tcp", "--client=zmqkafkatest-server", "--packets=1000000", "--csv"]
-        ports:
-        - containerPort: 8080
