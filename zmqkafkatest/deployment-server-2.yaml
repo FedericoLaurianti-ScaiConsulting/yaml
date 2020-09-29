@@ -31,4 +31,3 @@ spec:
         args: ["--zmq=tcp", "--server", "--packets=1", "--csv"]
         ports:
         - containerPort: 5555
-      restartPolicy: Never
