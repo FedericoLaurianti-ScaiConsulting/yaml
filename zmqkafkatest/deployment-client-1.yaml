@@ -16,4 +16,10 @@ spec:
       - name: zmqkafkatest-client
         image: repo-billerica.perform.empirix.com:6000/empirix-eva-ecc/zmqkafkatest:2.9.24-develop
         command: ["/home/hammer/hmcliutils/bin/hmzmqkafkatest"]
-        args: ["--zmq=tcp", "--client=zmqkafkatest-server", "--packets=1000000", "--csv"]
+        args: ["--zmq=tcp", "--client=zmqkafkatest-server", "--packets=1", "--csv=/csv"]
+        volumeMounts:
+        - mountPath: '/csv'
+          name: zmqkafkatest-client-volume
+      volumes:
+      - name: zmqkafkatest-client-volume
+        emptyDir: {}
