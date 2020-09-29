@@ -30,5 +30,5 @@ spec:
         command: ["/home/hammer/hmcliutils/bin/hmzmqkafkatest"]
         args: ["--zmq=tcp", "--server", "--packets=1", "--csv"]
         ports:
-      restartPolicy: Never
         - containerPort: 5555
+      restartPolicy: Never
