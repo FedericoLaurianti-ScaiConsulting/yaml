@@ -10,7 +10,7 @@ spec:
   selector:
     app: zmqkafkatest-server
 ---
-apiVersion: apps/v1
+apiVersion: v1
 kind: Pod
 metadata:
   name: zmqkafkatest-server
