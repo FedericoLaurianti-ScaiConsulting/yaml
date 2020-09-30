@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: zmqkafkatest-client
-        image: repo-billerica.perform.empirix.com:6000/empirix-eva-ecc/zmqkafkatest:2.9.24-develop
+        image: repo-billerica.perform.empirix.com:6000/empirix-eva-ecc/zmqkafkatest:2.9.53-feature-IN-36960-initial-delay
         command: ["/home/hammer/hmcliutils/bin/hmzmqkafkatest"]
         args: ["--zmq=tcp", "--client=zmqkafkatest-server", "--packets=10000", "--csv=/csv/test1.csv"]
         volumeMounts:
