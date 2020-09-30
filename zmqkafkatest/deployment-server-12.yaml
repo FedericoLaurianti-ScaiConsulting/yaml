@@ -19,7 +19,7 @@ metadata:
 spec:
   containers:
   - name: zmqkafkatest-server
-    image: repo-billerica.perform.empirix.com:6000/empirix-eva-ecc/zmqkafkatest:2.9.53-feature-IN-36960-initial-delay
+    image: repo-billerica.perform.empirix.com:6000/empirix-eva-ecc/zmqkafkatest:2.9.54-feature-IN-36960-initial-delay
     command: ["/home/hammer/hmcliutils/bin/hmzmqkafkatest"]
     args: ["--zmq=tcp", "--server", "--packets=10000", "--csv", "--initial-delay=10"]
     ports:
