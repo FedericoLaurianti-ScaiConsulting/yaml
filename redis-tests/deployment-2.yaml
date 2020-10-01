@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: redis-tests
+  labels:
+    app: redis-tests
+spec:
+  containers:
+  - name: redis-tests
+    image: repo-billerica.perform.empirix.com:6000/empirix-eva-ecc/redis-tests:2.9.24-develop
+    command: ["/home/hammer/hmcliutils/bin/hmredistests"]
+    args: ["--performance=get10M", "--num-zmq-bg-threads=1", "--pipelining=1"]
+  restartPolicy: Never
