@@ -25,5 +25,5 @@ spec:
     ports:
     - containerPort: 5555
   nodeSelector:
-    node-role.kubernetes.io/master: true
+    node-role.kubernetes.io/master: ''
   restartPolicy: Never
