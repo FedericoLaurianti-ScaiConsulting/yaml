@@ -24,4 +24,6 @@ spec:
     args: ["--zmq=tcp", "--server", "--packets=1000000", "--csv", "--initial-delay=10"]
     ports:
     - containerPort: 5555
+  nodeSelector:
+    node-role.kubernetes.io/master: true
   restartPolicy: Never
