@@ -1,21 +1,15 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: v1
+kind: Pod
 metadata:
   name: redis-tests
+  labels:
+    app: redis-tests
 spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: redis-tests
-  template:
-    metadata:
-      labels:
-        app: redis-tests
-    spec:
-      containers:
-      - name: redis-tests
-        image: repo-billerica.perform.empirix.com:6000/empirix-eva-ecc/redis-tests:2.9.24-develop
-        command: ["/home/hammer/hmcliutils/bin/hmredistests"]
-        args: ["--performance=get10M", "--num-zmq-bg-threads=1", "--pipelining=1"]
-        ports:
-        - containerPort: 8080
+  containers:
+  - name: redis-tests
+    image: repo-billerica.perform.empirix.com:6000/empirix-eva-ecc/redis-tests:2.9.24-develop
+    command: ["/home/hammer/hmcliutils/bin/hmzmqkafkatest"]
+    args: ["--zmq=tcp", "--server", "--packets=1000000", "--csv", "--initial-delay=10"]
+	  command: ["/home/hammer/hmcliutils/bin/hmredistests"]
+	  args: ["--performance=get10M", "--num-zmq-bg-threads=1", "--pipelining=1"]
+  restartPolicy: Never
