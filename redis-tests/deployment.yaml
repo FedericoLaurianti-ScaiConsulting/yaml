@@ -10,6 +10,6 @@ spec:
     image: repo-billerica.perform.empirix.com:6000/empirix-eva-ecc/redis-tests:2.9.24-develop
     command: ["/home/hammer/hmcliutils/bin/hmzmqkafkatest"]
     args: ["--zmq=tcp", "--server", "--packets=1000000", "--csv", "--initial-delay=10"]
-	  command: ["/home/hammer/hmcliutils/bin/hmredistests"]
-	  args: ["--performance=get10M", "--num-zmq-bg-threads=1", "--pipelining=1"]
+      command: ["/home/hammer/hmcliutils/bin/hmredistests"]
+      args: ["--performance=get10M", "--num-zmq-bg-threads=1", "--pipelining=1"]
   restartPolicy: Never
