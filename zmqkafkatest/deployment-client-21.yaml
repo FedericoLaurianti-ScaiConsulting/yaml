@@ -21,7 +21,7 @@ spec:
         - mountPath: '/csv'
           name: zmqkafkatest-client-volume
       nodeSelector:
-        node-role.kubernetes.io/worker: 'true'
+        node-role.kubernetes.io/worker: 'worker'
       volumes:
       - name: zmqkafkatest-client-volume
         emptyDir: {}
