@@ -1,0 +1,104 @@
+; 
+;  Capture configuration file
+; 
+;  This file contains most of the settings for the Capture process; most notables ones:
+;   - the number of threads for each Capture plugin
+;   - Connection Engine timeouts
+; 
+;  The ports to enable for each Capture plugin are instead defined into 'capture-ports-config.csv'
+;  
+[globals]
+log_level = warn                                                                       ; string option, Controls the verbosity of the logs of Capture component.
+enable_network_stats = false                                                           ; boolean option, Network statistics containing traffic breakdown by VLAN, etc.
+enable_dpdk = true                                                                     ; boolean option, Enable capture using the DPDK library and other DPDK features.
+hwbpf_filter =                                                                         ; string option, HW BPF; note that not all capture boards support it.
+swbpf_filter =                                                                         ; string option, Software-based BPF; this filtering is done before sending packets out of capture.
+max_active_packets = 100000                                                            ; int option, The maximum number of packets which may be present in memory at any one time.
+hash_function = sse42crc                                                               ; string option, Experimental feature
+packets_per_queue = 16384                                                              ; int option, The maximum length of a queue, specified in number of packets.
+arista_timestamp_enable = false                                                        ; boolean option, Enable the Arista timestamp feature.
+dpitable_timeout_offset_sec = 30                                                       ; int option, DPI table timeout safety offset for TCP/UDP/SCTP connections
+dpdk_optimize_for_pkt_size = 1550                                                      ; int option, Size in bytes of the typical packet acquired using DPDK interfaces.
+defragger_max_sessions = 16384                                                         ; int option, Max number of active defragging sessions; if zero IP defragging is disabled.
+defragger_timeout_sec = 2                                                              ; int option, Timeout for Defragger Sessions (sec)
+
+[connection_engine]
+timer_slots_per_second = 32                                                            ; int option, Granularity of the timer function in the Connection Engine: How frequently the timer function executes per second
+smart_filter_mode = 1                                                                  ; int option, Smart filter mode: 0 = Disabled, 1 = Discard Unknown (default), 2 = Allow First N Packets
+smart_filter_depth = 3                                                                 ; int option, Number of packets to pass to DPI at connection start. Only applicable if smart_filter_mode is 2 (Allow First N Packets)
+enable_smart_filter_icmp = false                                                       ; boolean option, false: (default) smart filter will filter out ICMP packets, true: smart filter will allow ICMP packets
+tcp_established_timeout_sec = 60                                                       ; int option, The maximum gap (in seconds) which may elapse between subsequent packets on a TCP connection before the system considers the connection gone away and releases related resources
+tcp_closing_timeout_sec = 5                                                            ; int option, The time (in seconds) after the FIN/FIN-ACK sequence of a TCP connection before the system releases related resources
+udp_idle_timeout_sec = 30                                                              ; int option, The maximum gap (in seconds) which may elapse between subsequent packets on a UDP connection before the system considers the connection gone away and releases related resources
+sctp_association_timeout_sec = 3600                                                    ; int option, The maximum gap (in seconds) which may elapse between subsequent packets on a SCTP connection before the system considers the connection gone away and releases related resources
+other_proto_idle_timeout_sec = 30                                                      ; int option, The maximum gap (in seconds) which may elapse between subsequent packets on a connection with a transport protocol other than TCP, UDP or SCTP before the system considers the connection gone away and releases related resources.
+timer_units_per_second = 32                                                            ; int option, Granularity of periodic timer in Tag Table. Number of times per second the timer function executes.
+ipmetrics_notunnel_timeout_sec = 60                                                    ; int option, Timeout for IPDRs on Gi interface
+ipmetrics_tunnel_timeout_sec = 1                                                       ; int option, Timeout for IPDRs on GTPu interface
+ipmetrics_pkt_threshold = 1                                                            ; int option, Min number of packets that each IP Metric Packet will aggregate.
+ipmetrics_max_per_second = 65536                                                       ; int option, The maximum number of IP Metrics packets a single thread or Tilera core may transmit each second
+esp_auth_data_size = 12                                                                ; int option, Size of ESP IPSEC AUTH DATA packets
+enable_esp_ipsec = false                                                               ; boolean option, Enable ESP IPSEC
+ipmetrics_enable_for_http = false                                                      ; boolean option, Enable delivery of IP Metrics each time a HTTP command is received
+enable_http_req_resp_filter = true                                                     ; boolean option, If enabled, only HTTP packets containing a HTTP command or command response will pass the SmartFilter
+max_http_streaming_concurr_conn = 0                                                    ; int option, Maximum number of concurrent HTTP streams for analysis. If 0, the feature is disabled.
+
+[tls]
+sip_tls_keys =                                                                         ; string option, List of SIP over TLS Connections and Private Keys (CSV format IP,Port,TLS-Keys,...)
+
+[framecheck]
+frame_check_mode = 0                                                                   ; int option, Framecheck mode: 0=None, 1=CRC, 2=IP Identification, 3=MAC Less CRC, 4=SCTP CRC
+frame_check_ttl_msec = 100                                                             ; int option, Size of duplicate packet detection window, as relative time
+frame_check_max_size = 1000                                                            ; int option, Size of duplicate packet detection window, as number of packets
+
+[ntp]
+ntp_sync_update_interval_sec = 30                                                      ; int option, NTP Time Synchronization interval (sec)
+ntp_sync_adjust_threshold_ms = 500                                                     ; int option, NTP Time Synchronization adjust threshold (msec)
+ntp_sync_set_threshold_ms = 5000                                                       ; int option, NTP Time Synchronization set threshold (msec)
+
+[tcaplb]
+enable_tcap_load_balancer = false                                                      ; boolean option, Enable TCAP load balancer
+
+[selective_recording]
+selrec_thread_number = 1                                                               ; int option, Selective Recording Number of IO threads
+selrec_max_bw_mbps = 300                                                               ; int option, Selective Recording Max IO bandwidth threshold before self-protection mechanism kicks in
+selrec_max_file_time_sec = 30                                                          ; int option, Maximum time (seconds) that Capture will  selective recording PCAP file to reach before closing the file and opening a new one
+selrec_max_file_size = 1073741824                                                      ; int option, Maximum size (bytes) that Capture will allow a selective recording PCAP file to reach before closing the file and opening a new one
+
+[tilera]
+tilera_enable = true                                                                   ; boolean option, Enable Tilera
+tilera_enable_ce = true                                                                ; boolean option, Enable Tilera CE
+tilera_parms =                                                                         ; string option, Command line parameters that will be appended to the firmware exec
+tilera_raw_dma = true                                                                  ; boolean option, Use Tilera RAW DMA mode
+tilera_sampling = 0                                                                    ; int option, Experimental feature
+tilera_num_enabled_tiles = 0                                                           ; int option, Number of Tilera tiles inside Tilera card. Special value zero means autochoose.
+tilera_enable_coredump = false                                                         ; boolean option, Enable Tilera Coredump
+tilera_worker_thread = 4                                                               ; int option, Tilera worker threads inside Capture
+tilera_pci_channel = 2                                                                 ; int option, Tilera number of PCI channels to use
+tilera_max_tcp_connections = 8388608                                                   ; int option, Maximum number of concurrent TCP connections monitored by the TagTable for Tilera workers
+tilera_max_rtp_streams = 1048576                                                       ; int option, Maximum number of concurrent RTP streams monitored by the TagTable for Tilera workers
+
+[pcaplive]
+pcap_thread_number = 1                                                                 ; int option, Worker threads for analysis of PCAP-acquired traffic.
+pcap_buffer_size_mb = 384                                                              ; int option, PCAP buffer size
+pcaplive_max_tcp_connections = 8388608                                                 ; int option, Maximum number of concurrent TCP connections monitored by the TagTable for PcapLive workers
+pcaplive_max_rtp_streams = 1048576                                                     ; int option, Maximum number of concurrent RTP streams monitored by the TagTable for PcapLive workers
+
+[dpdk]
+dpdk_advanced_features =                                                               ; int option, If 'hash_rss' is written here, HW-accelerated packet tagging will be used in place of software tagging.
+dpdk_thread_number = 2                                                                 ; int option, Worker threads for analysis of DPDK-acquired traffic.
+dpdk_aux_thread_number = 1                                                             ; int option, Auxiliary threads for analysis of DPDK-acquired traffic.
+dpdk_thread_buffer_size = 16                                                           ; int option, Exponent that determines the size of per-thread packet buffers.
+dpdk_port_rxqueue_size = 11                                                            ; int option, Exponent that determines the size of per-port RxQueue.
+dpdk_port_rxqueue_num = 32                                                             ; int option, Number of per-port RxQueues.
+dpdk_port_rxqueue_burst = 3                                                            ; int option, Exponent that determines the size of per-port RxQueue burst.
+dpdk_capture_ip =                                                                      ; string_list option, Capture node IP addresses used in ARP response
+dpdk_timestamper_enable = false                                                        ; boolean option, Enable DPDK timestamping offload to the NIC, if available.
+dpdk_max_tcp_connections = 8388608                                                     ; int option, Maximum number of concurrent TCP connections monitored by the TagTable for DPDK workers
+dpdk_max_rtp_streams = 1048576                                                         ; int option, Maximum number of concurrent RTP streams monitored by the TagTable for DPDK workers
+
+[inject]
+inject_thread_number = 0                                                               ; int option, Worker threads for analysis of PCAP-acquired traffic.
+inject_max_tcp_connections = 1000000                                                   ; int option, Maximum number of concurrent TCP connections monitored by the TagTable for Inject workers
+inject_max_rtp_streams = 50000                                                         ; int option, Maximum number of concurrent RTP streams monitored by the TagTable for Inject workers
+
