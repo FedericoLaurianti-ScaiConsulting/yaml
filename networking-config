@@ -90,7 +90,7 @@ mdm_database_ip = 127.0.0.1                                                     
 mdm_database_port = 5433                                                                                    ; uint32 option, TCP port of the Database node used to store the MDM data
 
 [selective_recording]
-selrec_redis_host = redis-redis-cluster-headless.default.svc.cluster.local:6379                             ; string option, The boostrap Redis shard to be used by software to read or updating selective recording configuration. Port 10000 is default for exms-nfv-redis-cluster-config RPM
+selrec_redis_host = redis-master-redis-cluster-headless.default.svc.cluster.local:6379                             ; string option, The boostrap Redis shard to be used by software to read or updating selective recording configuration. Port 10000 is default for exms-nfv-redis-cluster-config RPM
 
 [active_calls]
-active_calls_table_redis_host = redis-redis-cluster-headless.default.svc.cluster.local:6379                 ; string option, The boostrap Redis shard to be used by software to read or update the active calls table. Port 10000 is default for exms-nfv-redis-cluster-config RPM
+active_calls_table_redis_host = redis-master-redis-cluster-headless.default.svc.cluster.local:6379                 ; string option, The boostrap Redis shard to be used by software to read or update the active calls table. Port 10000 is default for exms-nfv-redis-cluster-config RPM
