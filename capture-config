@@ -98,7 +98,7 @@ dpdk_max_tcp_connections = 8388608                                              
 dpdk_max_rtp_streams = 1048576                                                         ; int option, Maximum number of concurrent RTP streams monitored by the TagTable for DPDK workers
 
 [inject]
-inject_thread_number = 0                                                               ; int option, Worker threads for analysis of PCAP-acquired traffic.
+inject_thread_number = 1                                                               ; int option, Worker threads for analysis of PCAP-acquired traffic.
 inject_max_tcp_connections = 1000000                                                   ; int option, Maximum number of concurrent TCP connections monitored by the TagTable for Inject workers
 inject_max_rtp_streams = 50000                                                         ; int option, Maximum number of concurrent RTP streams monitored by the TagTable for Inject workers
 
