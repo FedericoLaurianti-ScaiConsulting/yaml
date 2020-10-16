@@ -8,89 +8,89 @@
 ;   Note that some settings apply only to ZMQ backend and some only to Kafka backend.
 ; 
 [common]
-system_id = 0                                                                                               ; uint32 option, Unique identifier of this server, this has to be a number greater than 0 and less than 0xFFFFFFFF
-kafka_broker_ip = 127.0.0.1                                                                                 ; string option, Comma-separated list of IP addresses for the Kafka message broker
-openam_address = 127.0.0.1:8443                                                                             ; string option, OpenAM FQDN (or IP address) for REST and GUI authentication (used by hmdeployagent)
-zookeeper_ensemble = 127.0.0.1:2181                                                                         ; string option, Zookeeper ensemble connection string for cluster elasticity management (used by hmdeployagent)
-zmq_port_offset = 5000                                                                                      ; uint32 option, Port number offset for the block of TCP ports used by ZeroMQ for inter-componenent communications
-zmq_request_max_tcp_sktbuf = true                                                                           ; boolean option, Require the maximum allowed TCP socket buffer size from the OS for PUB ZeroMQ sockets
-zmq_partition_count = 32                                                                                    ; uint32 option, Number of ZMQ partitions to use for load balancing traffic in PUB/SUB channels
+system_id = 0                                                                                                   ; uint32 option, Unique identifier of this server, this has to be a number greater than 0 and less than 0xFFFFFFFF
+kafka_broker_ip = 127.0.0.1                                                                                     ; string option, Comma-separated list of IP addresses for the Kafka message broker
+openam_address = 127.0.0.1:8443                                                                                 ; string option, OpenAM FQDN (or IP address) for REST and GUI authentication (used by hmdeployagent)
+zookeeper_ensemble = 127.0.0.1:2181                                                                             ; string option, Zookeeper ensemble connection string for cluster elasticity management (used by hmdeployagent)
+zmq_port_offset = 5000                                                                                          ; uint32 option, Port number offset for the block of TCP ports used by ZeroMQ for inter-componenent communications
+zmq_request_max_tcp_sktbuf = true                                                                               ; boolean option, Require the maximum allowed TCP socket buffer size from the OS for PUB ZeroMQ sockets
+zmq_partition_count = 32                                                                                        ; uint32 option, Number of ZMQ partitions to use for load balancing traffic in PUB/SUB channels
 
 [management]
-ems_address = 127.0.0.1                                                                                     ; string option, EMS FQDN (or IP address) used by EMS agents
+ems_address = 127.0.0.1                                                                                         ; string option, EMS FQDN (or IP address) used by EMS agents
 
 [capture]
-capture_output_backend = zmq                                                                                ; string option, NOTE: right now (june 2017), only the ZMQ transport method is supported as output of Capture
-zmq_capture_output_transport = tcp                                                                          ; string option, ZMQ only: either 'ipc' if StateMachine is running on the same server of Capture, or 'tcp' otherwise
-zmq_capture_nthreads_io = 2                                                                                 ; uint32 option, ZMQ only: number of background threads, use 1 for every Gbps of traffic received/sent
-zmq_capture_allow_drop = true                                                                               ; boolean option, ZMQ only: allow drops when the ZMQ PUB output queue is full
-zmq_capture_output_size = 10000                                                                             ; uint32 option, ZMQ only: size of PUB socket output buffer, in number of messages
+capture_output_backend = zmq                                                                                    ; string option, NOTE: right now (june 2017), only the ZMQ transport method is supported as output of Capture
+zmq_capture_output_transport = tcp                                                                              ; string option, ZMQ only: either 'ipc' if StateMachine is running on the same server of Capture, or 'tcp' otherwise
+zmq_capture_nthreads_io = 2                                                                                     ; uint32 option, ZMQ only: number of background threads, use 1 for every Gbps of traffic received/sent
+zmq_capture_allow_drop = true                                                                                   ; boolean option, ZMQ only: allow drops when the ZMQ PUB output queue is full
+zmq_capture_output_size = 10000                                                                                 ; uint32 option, ZMQ only: size of PUB socket output buffer, in number of messages
 
 [statemachine]
-sm_output_backend = zmq                                                                                     ; string option, StateMachine supports both 'zmq' and 'kafka' as output backends... use ZMQ for performances
-sm_subscribe_partitions = 0-31                                                                              ; string option, comma-separated list of partition indexes to subscribe; the dash can be used to indicate a range. The default value subscribes to all partitions
-zmq_sm_subscribe_ip = capturel-eva-ecc-capture-service,capture2-eva-ecc-capture-service                     ; string option, comma-separated list of IP addresses of Capture components to which subscribe; this is actually used only if zmq_pub_capture_transport = tcp
-zmq_sm_tcaplb_subscribe_ip = tcaplbl-eva-ecc-tcaploadbalancer-service                                       ; string option, comma-separated list of IP addresses of Tcap Load Balancer components to which subscribe; this is actually used only if tcap load balancer is working
-zmq_sm_nthreads_io = 2                                                                                      ; uint32 option, ZMQ only: number of background threads; use 1 for every Gbps of traffic received/sent
-zmq_sm_output_transport = tcp                                                                               ; string option, ZMQ only: only 'tcp' is supported for now
-zmq_sm_allow_drop = true                                                                                    ; boolean option, ZMQ only: allow drops when the ZMQ PUB output queue is full
-zmq_sm_output_size = 10000                                                                                  ; uint32 option, ZMQ only: size of PUB socket output buffer, in number of messages
+sm_output_backend = zmq                                                                                         ; string option, StateMachine supports both 'zmq' and 'kafka' as output backends... use ZMQ for performances
+sm_subscribe_partitions = 0-31                                                                                  ; string option, comma-separated list of partition indexes to subscribe; the dash can be used to indicate a range. The default value subscribes to all partitions
+zmq_sm_subscribe_ip = capturel-eva-ecc-capture-service,capture2-eva-ecc-capture-service                         ; string option, comma-separated list of IP addresses of Capture components to which subscribe; this is actually used only if zmq_pub_capture_transport = tcp
+zmq_sm_tcaplb_subscribe_ip = tcaplbl-eva-ecc-tcaploadbalancer-service,tcaplb2-eva-ecc-tcaploadbalancer-service  ; string option, comma-separated list of IP addresses of Tcap Load Balancer components to which subscribe; this is actually used only if tcap load balancer is working
+zmq_sm_nthreads_io = 2                                                                                          ; uint32 option, ZMQ only: number of background threads; use 1 for every Gbps of traffic received/sent
+zmq_sm_output_transport = tcp                                                                                   ; string option, ZMQ only: only 'tcp' is supported for now
+zmq_sm_allow_drop = true                                                                                        ; boolean option, ZMQ only: allow drops when the ZMQ PUB output queue is full
+zmq_sm_output_size = 10000                                                                                      ; uint32 option, ZMQ only: size of PUB socket output buffer, in number of messages
 
 [sessionforwarder]
-sf_output_backend = zmq                                                                                     ; string option, SessionForwarder output backend must always be ZMQ. Kafka does not make sense and will trigger runtime errors!
-sf_subscribe_partitions = 0-31                                                                              ; string option, comma-separated list of partition indexes to subscribe; the dash can be used to indicate a range. The default value subscribes to all partitions
-zmq_sf_subscribe_ip = statel-eva-ecc-statemachine-service                                                   ; string option, ZMQ only: Comma-separated list of IP addresses of StateMachine components to which subscribe
-zmq_sf_nthreads_io = 2                                                                                      ; uint32 option, ZMQ only: number of background threads, use 1 for every Gbps of traffic received/sent
-zmq_sf_output_transport = tcp                                                                               ; string option, ZMQ only: only 'tcp' is supported for now
-zmq_sf_allow_drop = true                                                                                    ; boolean option, ZMQ only: allow drops when the ZMQ PUB output queue is full
-zmq_sf_output_size = 10000                                                                                  ; uint32 option, ZMQ only: size of PUB socket output buffer, in number of messages
-sf_masterslave_redis_hosts = redis-master-redis-cluster-headless.default.svc.cluster.local:6379             ; string option, The boostrap Redis shard to be used by the SessionForwarder. Port 10000 is default for exms-nfv-redis-cluster-config RPM
+sf_output_backend = zmq                                                                                         ; string option, SessionForwarder output backend must always be ZMQ. Kafka does not make sense and will trigger runtime errors!
+sf_subscribe_partitions = 0-31                                                                                  ; string option, comma-separated list of partition indexes to subscribe; the dash can be used to indicate a range. The default value subscribes to all partitions
+zmq_sf_subscribe_ip = statel-eva-ecc-statemachine-service                                                       ; string option, ZMQ only: Comma-separated list of IP addresses of StateMachine components to which subscribe
+zmq_sf_nthreads_io = 2                                                                                          ; uint32 option, ZMQ only: number of background threads, use 1 for every Gbps of traffic received/sent
+zmq_sf_output_transport = tcp                                                                                   ; string option, ZMQ only: only 'tcp' is supported for now
+zmq_sf_allow_drop = true                                                                                        ; boolean option, ZMQ only: allow drops when the ZMQ PUB output queue is full
+zmq_sf_output_size = 10000                                                                                      ; uint32 option, ZMQ only: size of PUB socket output buffer, in number of messages
+sf_masterslave_redis_hosts = redis-master-redis-cluster-headless.default.svc.cluster.local:6379                 ; string option, The boostrap Redis shard to be used by the SessionForwarder. Port 10000 is default for exms-nfv-redis-cluster-config RPM
 
 [sessioncorrelator]
-sc_output_backend = zmq                                                                                     ; string option, supports both 'zmq' and 'kafka' as output backends... use ZMQ for performances
-sc_subscribe_partitions = 0-31                                                                              ; string option, comma-separated list of partition indexes to subscribe; the dash can be used to indicate a range. The default value subscribes to all partitions
-zmq_sc_subscribe_sf_ip = corrl-eva-ecc-correlator-sessionfwd-service                                        ; string option, ZMQ only: comma-separated list of IP addresses of SessionForwarder components to which subscribe
-zmq_sc_subscribe_sc_ip = corrl-eva-ecc-correlator-sessioncorr-service                                       ; string option, ZMQ only: comma-separated list of IP addresses of all existing SessionCorrelator components. This is used for Iterative Correlation.
-zmq_sc_nthreads_io = 2                                                                                      ; uint32 option, ZMQ only: number of background threads, use 1 for every Gbps of traffic received/sent
-zmq_sc_output_transport = tcp                                                                               ; string option, ZMQ only: only 'tcp' is supported for now
-zmq_sc_allow_drop = true                                                                                    ; boolean option, ZMQ only: allow drops when the ZMQ PUB output queue is full
-zmq_sc_output_size = 10000                                                                                  ; uint32 option, ZMQ only: size of PUB socket output buffer, in number of messages
-sc_masterslave_redis_hosts = redis-master-redis-cluster-headless.default.svc.cluster.local:6379             ; string option, The boostrap Redis shard for Master/Slave realtime correlation. Port 10000 is default for exms-nfv-redis-cluster-config RPM
-sc_mstable_redis_hosts = redis-master-redis-cluster-headless.default.svc.cluster.local:6379                 ; string option, The boostrap Redis shard for Mobile Subscriber Table. Port 10000 is default for exms-nfv-redis-cluster-config RPM
+sc_output_backend = zmq                                                                                         ; string option, supports both 'zmq' and 'kafka' as output backends... use ZMQ for performances
+sc_subscribe_partitions = 0-31                                                                                  ; string option, comma-separated list of partition indexes to subscribe; the dash can be used to indicate a range. The default value subscribes to all partitions
+zmq_sc_subscribe_sf_ip = corrl-eva-ecc-correlator-sessionfwd-service                                            ; string option, ZMQ only: comma-separated list of IP addresses of SessionForwarder components to which subscribe
+zmq_sc_subscribe_sc_ip = corrl-eva-ecc-correlator-sessioncorr-service                                           ; string option, ZMQ only: comma-separated list of IP addresses of all existing SessionCorrelator components. This is used for Iterative Correlation.
+zmq_sc_nthreads_io = 2                                                                                          ; uint32 option, ZMQ only: number of background threads, use 1 for every Gbps of traffic received/sent
+zmq_sc_output_transport = tcp                                                                                   ; string option, ZMQ only: only 'tcp' is supported for now
+zmq_sc_allow_drop = true                                                                                        ; boolean option, ZMQ only: allow drops when the ZMQ PUB output queue is full
+zmq_sc_output_size = 10000                                                                                      ; uint32 option, ZMQ only: size of PUB socket output buffer, in number of messages
+sc_masterslave_redis_hosts = redis-master-redis-cluster-headless.default.svc.cluster.local:6379                 ; string option, The boostrap Redis shard for Master/Slave realtime correlation. Port 10000 is default for exms-nfv-redis-cluster-config RPM
+sc_mstable_redis_hosts = redis-master-redis-cluster-headless.default.svc.cluster.local:6379                     ; string option, The boostrap Redis shard for Mobile Subscriber Table. Port 10000 is default for exms-nfv-redis-cluster-config RPM
 
 [tcaploadbalancer]
-tcaplb_output_backend = zmq                                                                                 ; string option, StateMachine supports both 'zmq' and 'kafka' as output backends... use ZMQ for performances
-tcaplb_subscribe_partitions = 0-31                                                                          ; string option, comma-separated list of partition indexes to subscribe; the dash can be used to indicate a range. The default value subscribes to all partitions
-zmq_tcaplb_subscribe_ip = capturel-eva-ecc-capture-service                                                  ; string option, comma-separated list of IP addresses of Capture components to which subscribe; this is actually used only if zmq_pub_capture_transport = tcp
-zmq_tcaplb_nthreads_io = 2                                                                                  ; string option, ZMQ only: number of background threads; use 1 for every Gbps of traffic received/sent
-zmq_tcaplb_output_transport = tcp                                                                           ; string option, ZMQ only: 'ipc' or 'tcp' is supported for now
-zmq_tcaplb_allow_drop = true                                                                                ; string option, ZMQ only: Disable drop when output queue is full
-zmq_tcaplb_output_size = 10000                                                                              ; string option, ZMQ only: Output message size
+tcaplb_output_backend = zmq                                                                                     ; string option, StateMachine supports both 'zmq' and 'kafka' as output backends... use ZMQ for performances
+tcaplb_subscribe_partitions = 0-31                                                                              ; string option, comma-separated list of partition indexes to subscribe; the dash can be used to indicate a range. The default value subscribes to all partitions
+zmq_tcaplb_subscribe_ip = capturel-eva-ecc-capture-service                                                      ; string option, comma-separated list of IP addresses of Capture components to which subscribe; this is actually used only if zmq_pub_capture_transport = tcp
+zmq_tcaplb_nthreads_io = 2                                                                                      ; string option, ZMQ only: number of background threads; use 1 for every Gbps of traffic received/sent
+zmq_tcaplb_output_transport = tcp                                                                               ; string option, ZMQ only: 'ipc' or 'tcp' is supported for now
+zmq_tcaplb_allow_drop = true                                                                                    ; string option, ZMQ only: Disable drop when output queue is full
+zmq_tcaplb_output_size = 10000                                                                                  ; string option, ZMQ only: Output message size
 
 [eventstorage]
-es_subscribe_partitions = 0-31                                                                              ; string option, comma-separated list of partition indexes to subscribe; the dash can be used to indicate a range. The default value subscribes to all partitions
-zmq_es_subscribe_sm_ip =                                                                                    ; string option, ZMQ only: Comma-separated list of IP addresses of StateMachine Events components to which subscribe for Events (NOT CORRELATED EVENTS)
-zmq_es_subscribe_pkt_ip = 127.0.0.1                                                                         ; string option, ZMQ only: Comma-separated list of IP addresses of StateMachine packets components to which subscribe for Packets
-zmq_es_subscribe_corr_ip = 127.0.0.1                                                                        ; string option, ZMQ only: Comma-separated list of IP addresses of Event Correlator components to which subscribe for Events
-zmq_es_subscribe_corr_pkt_ip = 127.0.0.1                                                                    ; string option, ZMQ only: Comma-separated list of IP addresses of Event Correlator components to which subscribe for Packets
-zmq_es_subscribe_selrec_ip = 127.0.0.1                                                                      ; string option, ZMQ only: Comma-separated list of IP addresses of Capture Selective Recording components to which subscribe
-zmq_es_nthreads_io = 2                                                                                      ; uint32 option, ZMQ only: number of background threads, use 1 for every Gbps of traffic received/sent
+es_subscribe_partitions = 0-31                                                                                  ; string option, comma-separated list of partition indexes to subscribe; the dash can be used to indicate a range. The default value subscribes to all partitions
+zmq_es_subscribe_sm_ip =                                                                                        ; string option, ZMQ only: Comma-separated list of IP addresses of StateMachine Events components to which subscribe for Events (NOT CORRELATED EVENTS)
+zmq_es_subscribe_pkt_ip = 127.0.0.1                                                                             ; string option, ZMQ only: Comma-separated list of IP addresses of StateMachine packets components to which subscribe for Packets
+zmq_es_subscribe_corr_ip = 127.0.0.1                                                                            ; string option, ZMQ only: Comma-separated list of IP addresses of Event Correlator components to which subscribe for Events
+zmq_es_subscribe_corr_pkt_ip = 127.0.0.1                                                                        ; string option, ZMQ only: Comma-separated list of IP addresses of Event Correlator components to which subscribe for Packets
+zmq_es_subscribe_selrec_ip = 127.0.0.1                                                                          ; string option, ZMQ only: Comma-separated list of IP addresses of Capture Selective Recording components to which subscribe
+zmq_es_nthreads_io = 2                                                                                          ; uint32 option, ZMQ only: number of background threads, use 1 for every Gbps of traffic received/sent
 
 [hdfs]
-hdfs_ip = 127.0.0.1                                                                                         ; string option, Configure the IP address of the HDFS namenode; may be empty when using local storage
-hdfs_port = 8020                                                                                            ; uint32 option, HDFS IPC port
+hdfs_ip = 127.0.0.1                                                                                             ; string option, Configure the IP address of the HDFS namenode; may be empty when using local storage
+hdfs_port = 8020                                                                                                ; uint32 option, HDFS IPC port
 
 [events_database]
-events_database_ip = 127.0.0.1                                                                              ; string option, IP address of the Database node used to store the indexes of the Events
-events_database_port = 9000                                                                                 ; uint32 option, TCP port of the Database node used to store the indexes of the Events
-events_database_http_port = 8123                                                                            ; uint32 option, HTTP port of the Database node used to store the indexes of the Events
+events_database_ip = 127.0.0.1                                                                                  ; string option, IP address of the Database node used to store the indexes of the Events
+events_database_port = 9000                                                                                     ; uint32 option, TCP port of the Database node used to store the indexes of the Events
+events_database_http_port = 8123                                                                                ; uint32 option, HTTP port of the Database node used to store the indexes of the Events
 
 [mdm_database]
-mdm_database_ip = 127.0.0.1                                                                                 ; string option, IP address of the Database node used to store the MDM data
-mdm_database_port = 5433                                                                                    ; uint32 option, TCP port of the Database node used to store the MDM data
+mdm_database_ip = 127.0.0.1                                                                                     ; string option, IP address of the Database node used to store the MDM data
+mdm_database_port = 5433                                                                                        ; uint32 option, TCP port of the Database node used to store the MDM data
 
 [selective_recording]
-selrec_redis_host = redis-master-redis-cluster-headless.default.svc.cluster.local:6379                             ; string option, The boostrap Redis shard to be used by software to read or updating selective recording configuration. Port 10000 is default for exms-nfv-redis-cluster-config RPM
+selrec_redis_host = redis-master-redis-cluster-headless.default.svc.cluster.local:6379                          ; string option, The boostrap Redis shard to be used by software to read or updating selective recording configuration. Port 10000 is default for exms-nfv-redis-cluster-config RPM
 
 [active_calls]
-active_calls_table_redis_host = redis-master-redis-cluster-headless.default.svc.cluster.local:6379                 ; string option, The boostrap Redis shard to be used by software to read or update the active calls table. Port 10000 is default for exms-nfv-redis-cluster-config RPM
+active_calls_table_redis_host = redis-master-redis-cluster-headless.default.svc.cluster.local:6379              ; string option, The boostrap Redis shard to be used by software to read or update the active calls table. Port 10000 is default for exms-nfv-redis-cluster-config RPM
