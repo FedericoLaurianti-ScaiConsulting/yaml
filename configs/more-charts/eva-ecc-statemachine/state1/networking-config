@@ -29,7 +29,7 @@ zmq_capture_output_size = 10000                                                 
 [statemachine]
 sm_output_backend = zmq                                                                                     ; string option, StateMachine supports both 'zmq' and 'kafka' as output backends... use ZMQ for performances
 sm_subscribe_partitions = 0-31                                                                              ; string option, comma-separated list of partition indexes to subscribe; the dash can be used to indicate a range. The default value subscribes to all partitions
-zmq_sm_subscribe_ip = capturel-eva-ecc-capture-service                                                      ; string option, comma-separated list of IP addresses of Capture components to which subscribe; this is actually used only if zmq_pub_capture_transport = tcp
+zmq_sm_subscribe_ip = capturel-eva-ecc-capture-service,capture2-eva-ecc-capture-service                     ; string option, comma-separated list of IP addresses of Capture components to which subscribe; this is actually used only if zmq_pub_capture_transport = tcp
 zmq_sm_tcaplb_subscribe_ip = tcaplbl-eva-ecc-tcaploadbalancer-service                                       ; string option, comma-separated list of IP addresses of Tcap Load Balancer components to which subscribe; this is actually used only if tcap load balancer is working
 zmq_sm_nthreads_io = 2                                                                                      ; uint32 option, ZMQ only: number of background threads; use 1 for every Gbps of traffic received/sent
 zmq_sm_output_transport = tcp                                                                               ; string option, ZMQ only: only 'tcp' is supported for now
