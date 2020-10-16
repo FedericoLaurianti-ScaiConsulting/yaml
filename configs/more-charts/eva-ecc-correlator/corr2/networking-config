@@ -39,7 +39,7 @@ zmq_sm_output_size = 10000                                                      
 [sessionforwarder]
 sf_output_backend = zmq                                                                                     ; string option, SessionForwarder output backend must always be ZMQ. Kafka does not make sense and will trigger runtime errors!
 sf_subscribe_partitions = 0-31                                                                              ; string option, comma-separated list of partition indexes to subscribe; the dash can be used to indicate a range. The default value subscribes to all partitions
-zmq_sf_subscribe_ip = statel-eva-ecc-statemachine-service                                                   ; string option, ZMQ only: Comma-separated list of IP addresses of StateMachine components to which subscribe
+zmq_sf_subscribe_ip = state4-eva-ecc-statemachine-service                                                   ; string option, ZMQ only: Comma-separated list of IP addresses of StateMachine components to which subscribe
 zmq_sf_nthreads_io = 2                                                                                      ; uint32 option, ZMQ only: number of background threads, use 1 for every Gbps of traffic received/sent
 zmq_sf_output_transport = tcp                                                                               ; string option, ZMQ only: only 'tcp' is supported for now
 zmq_sf_allow_drop = true                                                                                    ; boolean option, ZMQ only: allow drops when the ZMQ PUB output queue is full
