@@ -167,7 +167,7 @@ enable_sbi_analysis=false                ; boolean option, Enable 5G SBI analysi
 http2_session_timeout=60                 ; int option, Timeout for HTTP2 Session
 
 [app_diameter]
-enabled=false                            ; boolean option, Enable AAA module
+enabled=true                             ; boolean option, Enable AAA module
 extract_eps_auth_info=true               ; boolean option, Include EPS Authentication Information in 3GPP-Authentication-Request events. Required for S1 deciphering
 diameter_transaction_timeout_enable=false ; boolean option, If set all transactions are closed by timeout
 diameter_apply_filter_on_event=true      ; boolean option, Description Not Available
@@ -207,7 +207,7 @@ paging_session_start_delay=1             ; int option, Description Not Available
 enable_oam=true                          ; boolean option, Parameter to configure to publish RANAP OAM packets
 
 [app_s1ap]
-enabled=true                            ; boolean option, Enable S1 module
+enabled=true                             ; boolean option, Enable S1 module
 paging_timeout=5                         ; int option, Description Not Available, min_value=1, max_value=300
 procedure_timeout=3                      ; int option, Description Not Available, min_value=1, max_value=3600
 idle_timeout=15                          ; int option, Description Not Available, min_value=2, max_value=604800
@@ -233,11 +233,11 @@ gtpc_event_by_lonely_triggered_msg=false ; boolean option, Description Not Avail
 close_pdp_by_s11_ho=false                ; boolean option, Enable PDP CTX closure by S11 HO
 
 [app_pfcp]
-enabled=false                             ; boolean option, Enable PFCP module
-pfcp_procedure_timeout=2                 ; int option, Description Not Available
-pfcp_duplicated_pdu_interval_sec=0       ; int option, Description Not Available
-discard_response_proc_without_request=true ; boolean option, If true the request procedures are discarded in case of missing request message
-discard_proc_without_corr_keys=false     ; boolean option, Description Not Available
+enabled=false                               ; boolean option, Enable PFCP module
+pfcp_procedure_timeout=2                    ; int option, Description Not Available
+pfcp_duplicated_pdu_interval_sec=0          ; int option, Description Not Available
+discard_response_proc_without_request=true  ; boolean option, If true the request procedures are discarded in case of missing request message
+discard_proc_without_corr_keys=false        ; boolean option, Description Not Available
 
 [app_camel]
 enabled=false                            ; boolean option, Enable Camel module
