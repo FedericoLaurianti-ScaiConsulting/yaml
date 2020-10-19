@@ -1,0 +1,303 @@
+; 
+;     Capture/StateMachine protocol configuration file 
+; 
+;     This file describes which protocols must be analyzed by the StateMachine. 
+;     Note that this file is used also by Capture component (and possibly others) 
+;     to correctly configure its smart filter. This is the reason why it lives in hmcommon/etc. 
+; 
+;     IMPORTANT: when adding/removing entire application suites <sections> please update also 
+;                the DataCore/ApplicationSuiteId* files 
+; 
+[common]
+itu_pointcode_format=0                   ; custom_list option, ITU Pointcode format: 0: none / 1: ITU_3_8_3 / 2: ITU_4_3_4_3
+ttc_pointcode_format=0                   ; custom_list option, TTC Pointcode format: 0: none / 1: TTC_7_4_5
+m2pa_variant=itu                         ; enum option, M2PA (MTP3) Variant (itu, ansi, china, ttc, etsi_itu, mexico_itu, att_ansi)
+m2ua_variant=itu                         ; enum option, M2UA (MTP3) Variant (itu, ansi, china, ttc, etsi_itu, mexico_itu, att_ansi)
+m3ua_variant=itu                         ; enum option, M3UA (MTP3) Variant (itu, ansi, china, ttc, etsi_itu, mexico_itu, att_ansi)
+sigtran_etsi_country_variant=none        ; enum option, SIGTRAN ETSI Country Variant applied when M2PA/M2UA/M3UA Variant = etsi_itu (none, uk, germany)
+ssn_table_000=142,142,ranap              ; string_list option, Sub-System Numbers Table (SSN-A, SSN-B, Application)
+ssn_table_001=254,254,bssap              ; string_list option, Sub-System Numbers Table (SSN-A, SSN-B, Application)
+ssn_table_002=146,146,camel              ; string_list option, Sub-System Numbers Table (SSN-A, SSN-B, Application)
+ssn_table_003=146,12,inap                ; string_list option, Sub-System Numbers Table (SSN-A, SSN-B, Application)
+ssn_table_004=12,12,inap                 ; string_list option, Sub-System Numbers Table (SSN-A, SSN-B, Application)
+ssn_table_005=251,252,inap               ; string_list option, Sub-System Numbers Table (SSN-A, SSN-B, Application)
+ssn_table_006=5,6,map                    ; string_list option, Sub-System Numbers Table (SSN-A, SSN-B, Application)
+ssn_table_007=6,6,map                    ; string_list option, Sub-System Numbers Table (SSN-A, SSN-B, Application)
+ssn_table_008=6,7,map                    ; string_list option, Sub-System Numbers Table (SSN-A, SSN-B, Application)
+ssn_table_009=7,7,map                    ; string_list option, Sub-System Numbers Table (SSN-A, SSN-B, Application)
+ssn_table_010=7,8,map                    ; string_list option, Sub-System Numbers Table (SSN-A, SSN-B, Application)
+ssn_table_011=6,8,map                    ; string_list option, Sub-System Numbers Table (SSN-A, SSN-B, Application)
+ssn_table_012=8,8,map                    ; string_list option, Sub-System Numbers Table (SSN-A, SSN-B, Application)
+ssn_table_013=8,9,map                    ; string_list option, Sub-System Numbers Table (SSN-A, SSN-B, Application)
+ssn_table_014=6,145,map                  ; string_list option, Sub-System Numbers Table (SSN-A, SSN-B, Application)
+ssn_table_015=7,145,map                  ; string_list option, Sub-System Numbers Table (SSN-A, SSN-B, Application)
+ssn_table_016=8,145,map                  ; string_list option, Sub-System Numbers Table (SSN-A, SSN-B, Application)
+ssn_table_017=6,146,map                  ; string_list option, Sub-System Numbers Table (SSN-A, SSN-B, Application)
+ssn_table_018=6,147,map                  ; string_list option, Sub-System Numbers Table (SSN-A, SSN-B, Application)
+ssn_table_019=6,148,map                  ; string_list option, Sub-System Numbers Table (SSN-A, SSN-B, Application)
+ssn_table_020=6,149,map                  ; string_list option, Sub-System Numbers Table (SSN-A, SSN-B, Application)
+ssn_table_021=9,149,map                  ; string_list option, Sub-System Numbers Table (SSN-A, SSN-B, Application)
+ssn_table_022=6,150,map                  ; string_list option, Sub-System Numbers Table (SSN-A, SSN-B, Application)
+ssn_table_023=8,147,map                  ; string_list option, Sub-System Numbers Table (SSN-A, SSN-B, Application)
+ssn_table_024=7,147,map                  ; string_list option, Sub-System Numbers Table (SSN-A, SSN-B, Application)
+ssn_table_025=8,0,map                    ; string_list option, Sub-System Numbers Table (SSN-A, SSN-B, Application)
+ssn_table_026=7,0,map                    ; string_list option, Sub-System Numbers Table (SSN-A, SSN-B, Application)
+ssn_table_027=0,0,custom                 ; string_list option, Sub-System Numbers Table (SSN-A, SSN-B, Application)
+ssn_table_028=0,0,custom                 ; string_list option, Sub-System Numbers Table (SSN-A, SSN-B, Application)
+ssn_table_029=0,0,custom                 ; string_list option, Sub-System Numbers Table (SSN-A, SSN-B, Application)
+ssn_table_030=0,0,custom                 ; string_list option, Sub-System Numbers Table (SSN-A, SSN-B, Application)
+ssn_table_031=0,0,custom                 ; string_list option, Sub-System Numbers Table (SSN-A, SSN-B, Application)
+ssn_table_032=0,0,custom                 ; string_list option, Sub-System Numbers Table (SSN-A, SSN-B, Application)
+ssn_table_033=0,0,custom                 ; string_list option, Sub-System Numbers Table (SSN-A, SSN-B, Application)
+ssn_table_034=0,0,custom                 ; string_list option, Sub-System Numbers Table (SSN-A, SSN-B, Application)
+ssn_table_035=0,0,custom                 ; string_list option, Sub-System Numbers Table (SSN-A, SSN-B, Application)
+ssn_table_036=0,0,custom                 ; string_list option, Sub-System Numbers Table (SSN-A, SSN-B, Application)
+ssn_table_037=0,0,custom                 ; string_list option, Sub-System Numbers Table (SSN-A, SSN-B, Application)
+ssn_table_038=0,0,custom                 ; string_list option, Sub-System Numbers Table (SSN-A, SSN-B, Application)
+ssn_table_039=0,0,custom                 ; string_list option, Sub-System Numbers Table (SSN-A, SSN-B, Application)
+ssn_table_040=7,6,map                    ; string_list option, Sub-System Numbers Table (SSN-A, SSN-B, Application)
+ssn_table_041=8,6,map                    ; string_list option, Sub-System Numbers Table (SSN-A, SSN-B, Application)
+ssn_table_042=11,6,map                   ; string_list option, Sub-System Numbers Table (SSN-A, SSN-B, Application)
+callmgr_connecting_timeout=35            ; int option, Timeout for connecting state of some protocols
+callmgr_connected_timeout=35             ; int option, Timeout for connected state of some protocols
+callmgr_disconnecting_timeout=35         ; int option, Timeout for disconnecting state of some protocols
+callmgr_megaco_sdp_preference=none       ; string option, Megaco SDP preference
+
+[common_ss7]
+conn_oriented_connecting_timeout=60      ; int option, Description Not Available, min_value=0, max_value=604800
+conn_oriented_connected_timeout=600      ; int option, Description Not Available, min_value=0, max_value=604800
+conn_oriented_disconnecting_timeout=30   ; int option, Description Not Available, min_value=0, max_value=604800
+
+[maintenance]
+disable_module=                          ; string option, The List Of Module Names To Be Disabled
+
+[dpi]
+enable_dpi=false                         ; boolean option, Enable DPI Analysis
+ix_engine_offload=true                   ; boolean option, Enable DPI offload
+ix_engine_no_offload_list=               ; string option, Description Not Available
+dpi_disable_protocol_name_list=          ; string option, Description Not Available
+dpi_max_attribute_length=240             ; int option, Description Not Available
+dpi_attribute_list=                      ; string option, Format: ServiceName.AttributeName(Mandatory):DisableOffloadForService(Optional) where DisableOffloadForService value is 0 or 1 (it defaults to 1) and indicates if the offload should be selectively disabled for all connections that get classified as 'ServiceName'. e.g. gtp.version:0,gtp.seq,gtp.teid:1
+preallocated_dpi_flows=100000            ; int option, Description Not Available
+
+[app_ip]
+enabled=true                             ; boolean option, Enable IP module
+enable_ip_xdr=false                      ; boolean option, Enable IPDR Event
+selective_ipdr_enabled=false             ; boolean option, Writing Of Selective Ipdr
+selective_ipdr_excluded_ports=0          ; int_list option, List Of Exclude TCP Ports For Selective Ipdr
+ip_xdr_recovery_timeout_sec=10           ; integer option, Timeout for closing IPDR with the recovery mechanism, in seconds
+ip_xdr_snapshot_timeout_sec=60           ; integer option, Timeout for generating IPDR snapshots, in seconds
+sctp_idle_timeout_sec=3600               ; integer option, Timeout for closing SCTP associations, in seconds
+
+[app_ip_up]
+enabled=true                             ; boolean option, Enable IP UP module
+enable_ip_xdr=false                      ; boolean option, Enable IPDR Event
+enable_userplane_samples=true            ; boolean option, Enable IP userplane sample generation
+enable_userplane_services=true           ; boolean option, Enable IP UP Services
+ip_transport_layer_bucket_size=131072    ; int option, GTP TEID Bucket Size
+selective_ipdr_enabled=false             ; boolean option, Writing Of Selective Ipdr
+selective_ipdr_excluded_ports=0          ; int_list option, List Of Exclude Ports For Selective Ipdr
+ip_xdr_recovery_timeout_sec=10           ; integer option, Timeout for closing IPDR with the recovery mechanism, in seconds
+ip_xdr_snapshot_timeout_sec=2            ; integer option, Timeout for generating IPDR snapshots, in seconds
+sctp_idle_timeout_sec=5                  ; integer option, Timeout for closing SCTP associations, in seconds
+teid_idle_timeout_sec=2                  ; integer option, Userplane Tunnel Endpoint identifier timeout, in seconds
+subscriber_stat_timeout_sec=2            ; integer option, Userplane Subscriber Metric Timeout, in seconds
+
+[app_dns]
+enabled=true                            ; boolean option, Enable DNS
+dns_transaction_timeout=5                ; integer option, DNS transaction timeout in seconds, min_value=0, max_value=604800
+dns_fqdn_filters=                        ; string_list option, DNS FQDN Whitelist Filter
+dns_server_filters=                      ; string_list option, DNS Server Whitelist Filter
+dns_customized=false                     ; boolean option, DNS Customized
+
+[app_dns_up]
+enabled=true                            ; boolean option, Enable DNS User Plane
+dns_transaction_timeout=5                ; integer option, DNS transaction timeout in seconds, min_value=0, max_value=604800
+dns_fqdn_filters=                        ; string_list option, DNS FQDN Whitelist Filter
+dns_server_filters=                      ; string_list option, DNS Server Whitelist Filter
+dns_customized=false                     ; boolean option, DNS Enable addtional customized field
+
+[app_http]
+enabled=true                            ; boolean option, Enable HTTP module
+enable_ftp_asdr=false                    ; boolean option, Enable ASDR Writing
+http_xdr_closingtimeout=60               ; integer option, Description Not Available, min_value=0, max_value=604800
+http_voice_timeout=60                    ; integer option, Description Not Available, min_value=0, max_value=604800
+enable_adaptive_streaming=false          ; boolean option, Enable Adaptive Streaming Analysis
+web_https_page_closing_timeout=70        ; integer option, Description Not Available
+web_library_buffer_size=256              ; integer option, Description Not Available
+web_page_admitted_requests_interval=0    ; integer option, Admitted Requests Interval For Page (sec)
+web_page_closing_timeout=70              ; integer option, Description Not Available
+web_page_filter_content_type=            ; string_list option, List Of Content Type Filters
+web_page_filter_services_id=0            ; string_list option, List Of Service ID Filters
+web_page_filter_url_extension=           ; string_list option, List Of Url Extension Filters
+web_page_filter_url_substring=           ; string_list option, List Of Url Substring Filters
+page_without_home=0                      ; integer option, Description Not Available
+handshake_analysis=false                 ; boolean option, Enabling Handshake Analysis
+web_filter_enabled=0                     ; integer option, Description Not Available
+max_characters_url=256                   ; integer option, Description Not Available
+max_characters_useragent=256             ; integer option, Description Not Available
+capture_get_post_variables=0             ; integer option, Description Not Available
+http_recovery_timeout_sec=180            ; integer option, HTTP Recovery timer (sec)
+enable_sbi_analysis=false                ; boolean option, Enable 5G SBI analysis
+http2_session_timeout=60                 ; int option, Timeout for HTTP2 Session
+
+[app_http_up]
+enabled=true                            ; boolean option, Enable HTTP module
+enable_http_pages=false                  ; boolean option, Enable Page Analysis
+enable_ftp_asdr=false                    ; boolean option, Enable ASDR Writing
+http_xdr_closingtimeout=60               ; integer option, Description Not Available, min_value=0, max_value=604800
+http_voice_timeout=60                    ; integer option, Description Not Available, min_value=0, max_value=604800
+enable_adaptive_streaming=false          ; boolean option, Enable Adaptive Streaming Analysis
+web_https_page_closing_timeout=70        ; integer option, Description Not Available
+web_library_buffer_size=256              ; integer option, Description Not Available
+web_page_admitted_requests_interval=0    ; integer option, Admitted Requests Interval For Page (sec)
+web_page_closing_timeout=70              ; integer option, Description Not Available
+web_page_filter_content_type=            ; string_list option, List Of Content Type Filters
+web_page_filter_services_id=0            ; string_list option, List Of Service ID Filters
+web_page_filter_url_extension=           ; string_list option, List Of Url Extension Filters
+web_page_filter_url_substring=           ; string_list option, List Of Url Substring Filters
+page_without_home=0                      ; integer option, Description Not Available
+handshake_analysis=false                 ; boolean option, Enabling Handshake Analysis
+web_filter_enabled=0                     ; integer option, Description Not Available
+max_characters_url=256                   ; integer option, Description Not Available
+max_characters_useragent=256             ; integer option, Description Not Available
+capture_get_post_variables=false         ; boolean option, Description Not Available
+http_recovery_timeout_sec=180            ; integer option, HTTP Recovery timer (sec)
+enable_sbi_analysis=false                ; boolean option, Enable 5G SBI analysis
+http2_session_timeout=60                 ; int option, Timeout for HTTP2 Session
+
+[app_diameter]
+enabled=false                            ; boolean option, Enable AAA module
+extract_eps_auth_info=true               ; boolean option, Include EPS Authentication Information in 3GPP-Authentication-Request events. Required for S1 deciphering
+diameter_transaction_timeout_enable=false ; boolean option, If set all transactions are closed by timeout
+diameter_apply_filter_on_event=true      ; boolean option, Description Not Available
+diameter_force_international_flag=false  ; boolean option, Enable flag to force international format
+
+[app_isup]
+enabled=false                            ; boolean option, Enable Isup module
+enable_isup_asdr=true                    ; boolean option, Description Not Available
+enable_bicc_asdr=true                    ; boolean option, Description Not Available
+talktime_as_calllength=0                 ; integer option, Description Not Available
+ooredoo_phone_number_normalization=0     ; integer option, Description Not Available
+isup_variant=itu                         ; enum option, ISUP Variant (itu, ansi, china, ttc, etsi_itu, mexico_itu, att_ansi)
+bicc_variant=itu                         ; enum option, BICC Variant (itu, ansi, china, ttc, etsi_itu, mexico_itu, att_ansi)
+isup_bicc_etsi_country_variant=none      ; enum option, ISUP/BICC ETSI Country Variant applied when ISUP/BICC Variant = etsi_itu (none, uk, germany)
+
+[app_map]
+enabled=false                            ; boolean option, Enable Gsm Map module
+default_country_code=1                   ; int option, The Default Country Code
+enable_map_asdr=true                     ; boolean option, Description Not Available
+idle_timeout=10                          ; int option, Description Not Available, min_value=0, max_value=604800
+map_gt_normalized=true                   ; boolean option, Enable GT Normalization
+max_handover_session_duration=30         ; int option, Description Not Available
+map_max_fsm_session=30                   ; int option, Description Not Available
+map_max_general_session=20               ; int option, Description Not Available
+map_timeout=1                            ; int option, Description Not Available
+map_update_ms_table_by_imsi_tmsi=false   ; boolean option, Enable The Update Of MS-Table With Imsi-Tmsi Association
+tcap_restarted_nostrict=false            ; boolean option, Description Not Available
+tcap_time_out=0                          ; int option, Description Not Available
+
+[app_ranap]
+enabled=false                            ; boolean option, Enable Ranap module
+enable_iups_asdr=true                    ; boolean option, Enable ASDR Writing
+enable_iucs_asdr=true                    ; boolean option, Enable ASDR Writing
+cs_paging_timeout=5                      ; int option, Description Not Available, min_value=2, max_value=7200
+ps_paging_timeout=5                      ; int option, Description Not Available, min_value=2, max_value=7200
+paging_session_start_delay=1             ; int option, Description Not Available, min_value=1, max_value=5
+enable_oam=true                          ; boolean option, Parameter to configure to publish RANAP OAM packets
+
+[app_s1ap]
+enabled=false                            ; boolean option, Enable S1 module
+paging_timeout=5                         ; int option, Description Not Available, min_value=1, max_value=300
+procedure_timeout=3                      ; int option, Description Not Available, min_value=1, max_value=3600
+idle_timeout=15                          ; int option, Description Not Available, min_value=2, max_value=604800
+enable_oam=true                          ; boolean option, Parameter to configure to publish S1AP OAM packets
+enable_write_nonassoc_packets=true       ; boolean option, If enabled, UE-signalling packets which could not be associated with a subscriber connection will be published and stored
+paging_mode=full                         ; enum option, S1AP Paging Analysis Mode: Full, Light (Only Successful Pages), Discard (No processing: Discard all paging messages)
+enable_debug_discovery_cache=false       ; boolean option, Cache MME IP addresses and GUMMEIs to disk
+
+[app_gtpc]
+enabled=false                            ; boolean option, Enable GTP module
+enable_gtpv1=true                        ; boolean option, Description Not Available
+enable_gtpv2=true                        ; boolean option, Description Not Available
+gtpc_procedure_timeout=5                 ; int option, Description Not Available
+abroad_is_default=false                  ; boolean option, Description Not Available
+gtpv1_manage_s1ap_deciphering_key=true   ; boolean option, Description Not Available
+gtpv1_manage_gb_deciphering_key=true     ; boolean option, Description Not Available
+enable_modify_bearer_filtering=false     ; boolean option, Enable filter for Modify Bearer
+epg_subnet=                              ; string_list option, Description Not Available
+duplicate_procedures_leg_subnets=        ; string_list option, Description Not Available
+duplicate_opening_procedures_leg_subnets= ; string_list option, Description Not Available
+duplicate_detection_interval_sec=2       ; int option, Description Not Available
+gtpc_event_by_lonely_triggered_msg=false ; boolean option, Description Not Available
+close_pdp_by_s11_ho=false                ; boolean option, Enable PDP CTX closure by S11 HO
+
+[app_pfcp]
+enabled=false                             ; boolean option, Enable PFCP module
+pfcp_procedure_timeout=2                 ; int option, Description Not Available
+pfcp_duplicated_pdu_interval_sec=0       ; int option, Description Not Available
+discard_response_proc_without_request=true ; boolean option, If true the request procedures are discarded in case of missing request message
+discard_proc_without_corr_keys=false     ; boolean option, Description Not Available
+
+[app_camel]
+enabled=false                            ; boolean option, Enable Camel module
+default_country_code=1                   ; int option, The Default Country Code
+enable_camel_asdr=true                   ; boolean option, Enable Camel Detail Record
+tcap_restarted_nostrict=false            ; boolean option, TCAP Restarted Nostrict
+tcap_time_out=0                          ; int option, Delayed Closure Transaction Timeout (Sec)
+cap_disabled_extensions=false            ; boolean option, Use a Protocol version without Extension
+max_session_duration=300                 ; int option, Max Allowed Session Duration (sec)
+wait_tcap_end=0                          ; int option, Close ASDR on TCAP-End
+useCallingGTT=true                       ; boolean option, Use Calling GT for Roaming Type
+useFirstResponseToIdp=false              ; boolean option, Connect Delay comes from First Response
+end_onreleasecall=1                      ; int option, Close ASDR on Release
+
+[app_sbi5g]
+enabled=false                            ; boolean option, Enable SBI-5G module
+
+[app_rtp]
+enabled=false                            ; boolean option, Enable RTP protocol
+rtp_recovery_timeout_sec=100             ; integer option, Timeout for closing RTP streams with the recovery mechanism, in seconds
+
+[app_sip]
+enabled=false                            ; boolean option, Enable SIP protocol
+sip_enable_ccc=false                     ; boolean option, Enable SIP Call Control Conferencing
+sip_182_enable=false                     ; boolean option, Enable SIP 182
+sip_182_stop_on_prov=true                ; boolean option, SIP 182 Stop on provsional response
+sip_182_timeout=3600                     ; integer option, SIP 182 Queue timeout (sec)
+sip_avaya_global_session_id_enabled=false ; boolean option, Enable Avaya Globally Unique ID
+sip_calc_pdd_18x_only=0                  ; integer option, SIP Calculate PDD if 18x message received
+sip_call_retry_error_display=false       ; boolean option, Suppress error if SIP retry is sucessful
+sip_call_retry_error_list=300-399,401,406,407,422,484,606 ; string option, SIP Retry error code list
+sip_call_retry_timer=5                   ; integer option, SIP retry timer in (sec)
+sip_enable_cancel=false                  ; boolean option, Enable SIP Cancel
+sip_enable_priority_call_detection=false ; boolean option, Enable SIP Priority call detection
+sip_enable_privacy_detection=false       ; boolean option, Enable SIP Privacy detection
+sip_enable_rtcp_xr_reports=false         ; boolean option, Enable SIP RTCP Extended Report
+sip_enable_via_host_in_tx_id=false       ; boolean option, Enable SIP adding the via host as part of the sip transaction id
+sip_end_cdr_timeout=2                    ; integer option, SIP end call timeout (sec)
+sip_tg_method=disabled                   ; string option, SIP Trunk group method
+sip_use_cause_release_message_only=0     ; integer option, Description Not Available
+sip_vq_wait_time=5                       ; integer option, Description Not Available
+talktime_as_calllength=0                 ; integer option, Description Not Available
+sip_transaction_global_timeout_sec=37    ; integer option, Description Not Available
+sip_transaction_complete_timeout_sec=37  ; integer option, Description Not Available
+sip_transaction_proceeding_timeout_sec=90 ; integer option, Description Not Available
+
+[app_sip_up]
+enabled=false                            ; boolean option, Enable SIP user plane
+
+[app_megaco]
+enabled=false                            ; boolean option, Enable Megaco protocol
+hm_reg_megaco_enable_virtualization=0    ; int option, Description Not Available
+hm_reg_mid_enable_heuristic_learning=false ; boolean option, Description Not Available
+hm_reg_mid_enable_save_swap=false        ; boolean option, Description Not Available
+megaco_sdp_preference=none               ; enum option, Description Not Available
+
+[app_isakmp]
+enabled=false                            ; boolean option, Enable ISAKMP Protocol
+transaction_timeout=60                   ; int option, Description Not Available
+
+[app_h323]
+enabled=false                             ; boolean option, Enable H.323 protocol
+
